@@ -1,0 +1,32 @@
+# dependencies
+/node_modules
+
+# IDE related
+.idea
+
+# production
+*.d.ts
+/dist
+/public
+/build
+
+# misc
+.DS_Store
+
+# npm configuration
+.npmrc
+
+# test coverage
+/coverage
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
