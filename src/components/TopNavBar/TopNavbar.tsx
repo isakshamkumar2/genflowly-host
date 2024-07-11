@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import SearchBar, { InputSize } from '../SearchBar/SearchBar';
 import {
   SearchBar,
   InputSize,
@@ -38,6 +37,9 @@ type TopNavbarProps = {
   fontSize?: number;
   getSelectedLanguage: (lang: string) => void;
   selectedLanguage: string;
+  loginButtonAriaLabel?: string;
+  dropDownLabel?: string;
+  theme?: ThemeType;
 };
 
 const TopNavbar: React.FC<TopNavbarProps> = ({
@@ -62,11 +64,13 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
   fontSize,
   getSelectedLanguage,
   selectedLanguage,
+  loginButtonAriaLabel,
+  dropDownLabel,
+  theme
 }) => {
   const [selectedListItem, setSelectedListItem] = useState<number | null>(0);
   const [focusedListItem, setFocusedListItem] = useState<number | null>(null);
 
-  // const [selectedOption, setSelectedOption] = useState(dropDownOptions[0]);
   const { t } = useTranslation();
 
   const handleItemClick = (index: number) => {
@@ -76,7 +80,7 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
 
   const NavbarContainer = styled.div`
     font-family: ${(props) => themes.light.fontFamily};
-    background-color: ${(props) => themes.light.surface};
+    background-color: ${(props) => theme===ThemeType.LIGHT? themes.light.surface:''};
   `;
 
   const ListItem = styled.li<{ isSelected: boolean }>`
@@ -91,7 +95,7 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
       background-color: ${(props) => themes.light.primaryColor};
     }
   `;
-  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+  const handleKeyBoardNavigation = (e: React.KeyboardEvent, index: number) => {
     switch (e.key) {
       case 'Enter':
       case ' ':
@@ -123,7 +127,7 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
 
   return (
     <NavbarContainer className={Styles['navbarContainer']}>
-      <ul className={Styles['optionContainer']}>
+      <div className={Styles['optionContainer']}>
         <div className={Styles['logoContainer']}>
           <a
             tabIndex={selectedListItem ? -1 : 0}
@@ -138,15 +142,15 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
             />
           </a>
         </div>
-        <li className={Styles.listItemContainer}>
+        <ul className={Styles.listItemContainer}>
           {navItemsList.map((option, index) => (
             <ListItem
               data-testid={`nav-item-${index}`}
               id={`list-item-${index}`}
               isSelected={selectedListItem === index}
               aria-selected={selectedListItem === index}
-              style={{ fontSize: fontSize ? `${fontSize}px` : '1.2rem' }}
-              onKeyDown={(e) => handleKeyDown(e, index)}
+              style={{ fontSize: fontSize ? `${fontSize}rem` : '1.2rem' }}
+              onKeyDown={(e) => handleKeyBoardNavigation(e, index)}
               tabIndex={selectedListItem === index ? -1 : 0}
               key={index}
               className={`${Styles.listItem} ${
@@ -157,8 +161,8 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
               {option}
             </ListItem>
           ))}
-        </li>
-      </ul>
+        </ul>
+      </div>
 
       {searchBarVisible && (
         <SearchBar
@@ -176,6 +180,7 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
 
       <div className={Styles.profile}>
         <DropDown
+        alt={dropDownLabel?? t('DropDownLabel')}
           options={dropDownOptions}
           setSelectedOption={setSelectedLanguage}
           selectedOption={selectedLanguage}
@@ -186,6 +191,7 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
         ) : (
           <div data-testid="login-button">
             <MultiPurposeButton
+            label={loginButtonAriaLabel??t('Login')}
               theme={ThemeType.DARK}
               variant={ButtonVariant.text}
               onClick={loginHandler}

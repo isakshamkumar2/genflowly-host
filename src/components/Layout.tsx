@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import TopNavbar from './TopNavBar/TopNavbar';
-import { LANGUAGES } from '../constants';
+import { COMPANY_NAME, LANGUAGES, LOGINBUTTONTEXT, NAV_ITEMS_LIST, SEARCH_BAR_OPTIONS, SEARCHBARPLACEHOLDER } from '../constants';
 import { s3ImageUrls } from '../config/assets/config';
+import { ThemeType } from '@genflowly/react-assets/dist';
 
 type LayoutProps = {
   children?: React.JSX.Element[] | React.JSX.Element;
@@ -13,28 +14,29 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     LANGUAGES[0]
   );
   const navbarProps = {
-    navItemsList: ['Marketplace', 'Prompt Engineering', 'Prompt Chaining'],
-    searchBarVisible: true,
-    searchBarOptions: ['Option 1', 'Option 2', 'Option 3'],
-    selectedNavItem: (item: string) =>
-      console.log(`Selected nav item: ${item}`),
+    navItemsList: NAV_ITEMS_LIST,
+    searchBarVisible: false,
+    searchBarOptions: SEARCH_BAR_OPTIONS,
+    selectedNavItem: (item: string) =>{},
     getSelectedLanguage: (lang: string) =>
-      console.log(`Selected language: ${lang}`),
-    profileName: 'John Doe',
+    {},
+    profileName: '',
     loggedIn: false,
     logoSrc: s3ImageUrls.companyLogo,
-    logoImageAlt: 'Genflowly',
-    searchBarPlaceholder: 'Search...',
-    profileLabel: 'My Profile',
-    loginButtonText: 'Login',
-    loginHandler: () => console.log('Login clicked'),
+    logoImageAlt: COMPANY_NAME,
+    searchBarPlaceholder: SEARCHBARPLACEHOLDER,
+    profileLabel: '',
+    loginButtonText: LOGINBUTTONTEXT,
+    loginHandler: () => {},
     inputValue: inputValue,
     setInputValue: setInputValue,
-    searchBarHandler: (value: string) => console.log(`Search for: ${value}`),
+    searchBarHandler: (value: string) =>{},
     dropDownOptions: LANGUAGES,
     logoRedirectUrl: '/',
     setSelectedLanguage: setSelectedLanguage,
     selectedLanguage: selectedLanguage,
+    dropDownLabel:'',
+    theme:ThemeType.LIGHT
   };
   return (
     <div>
