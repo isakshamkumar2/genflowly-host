@@ -3,7 +3,7 @@ name: Amplify Deploy
 on:
   push:
     branches:
-      - feature/task-309-amplify-deploy
+      - main
 
 jobs:
   build:
