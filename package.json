@@ -13,7 +13,7 @@
     "pretty": "prettier --write .",
     "prepare": "if [ -z \"$CI\" ]; then husky install; fi",
     "pre-commit": "lint-staged && jest && tsc --noEmit && jest --coverage",
-    "build": "react-scripts build",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
