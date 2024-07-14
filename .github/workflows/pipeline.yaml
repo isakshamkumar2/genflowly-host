@@ -21,6 +21,11 @@ jobs:
       - name: Update npm
         run: npm install -g npm@latest
 
+      - name: Setup .npmrc file for GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> ~/.npmrc
+          echo "@genflowly:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+
       - name: Install dependencies
         run: npm ci
 
