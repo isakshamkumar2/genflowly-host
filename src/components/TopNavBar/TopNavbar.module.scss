@@ -3,7 +3,7 @@
   max-width: 100vw;
   padding: 0.5rem 2rem;
   align-items: center;
-  height:3.5em;
+  height: 3.5em;
   justify-content: space-between;
   gap: 4rem;
 }
@@ -48,7 +48,6 @@
 .logoContainer {
   width: auto;
   height: 70%;
-
 }
 .logoImage {
   width: 100%;
@@ -70,7 +69,6 @@
   align-items: center;
 }
 
-
 @media (max-width: 1415px) {
   .listItem {
     font-size: 1rem !important;
@@ -87,7 +85,7 @@
   .listItem {
     font-size: 0.9rem !important;
   }
-  .listItemContainer{
+  .listItemContainer {
     gap: 0.8rem;
   }
 }
@@ -95,7 +93,7 @@
   .listItem {
     font-size: 0.8rem !important;
   }
-  .listItemContainer{
+  .listItemContainer {
     gap: 0.5rem;
   }
 }

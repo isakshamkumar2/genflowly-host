@@ -66,7 +66,7 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
   selectedLanguage,
   loginButtonAriaLabel,
   dropDownLabel,
-  theme
+  theme,
 }) => {
   const [selectedListItem, setSelectedListItem] = useState<number | null>(0);
   const [focusedListItem, setFocusedListItem] = useState<number | null>(null);
@@ -80,7 +80,8 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
 
   const NavbarContainer = styled.div`
     font-family: ${(props) => themes.light.fontFamily};
-    background-color: ${(props) => theme===ThemeType.LIGHT? themes.light.surface:''};
+    background-color: ${(props) =>
+      theme === ThemeType.LIGHT ? themes.light.surface : ''};
   `;
 
   const ListItem = styled.li<{ isSelected: boolean }>`
@@ -180,7 +181,7 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
 
       <div className={Styles.profile}>
         <DropDown
-        alt={dropDownLabel?? t('DropDownLabel')}
+          alt={dropDownLabel ?? t('DropDownLabel')}
           options={dropDownOptions}
           setSelectedOption={setSelectedLanguage}
           selectedOption={selectedLanguage}
@@ -191,7 +192,7 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
         ) : (
           <div data-testid="login-button">
             <MultiPurposeButton
-            label={loginButtonAriaLabel??t('Login')}
+              label={loginButtonAriaLabel ?? t('Login')}
               theme={ThemeType.DARK}
               variant={ButtonVariant.text}
               onClick={loginHandler}
