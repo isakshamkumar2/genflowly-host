@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import TopNavbar from './TopNavBar/TopNavbar';
-import { COMPANY_NAME, LANGUAGES, LOGINBUTTONTEXT, NAV_ITEMS_LIST, SEARCH_BAR_OPTIONS, SEARCHBARPLACEHOLDER } from '../constants';
+import {
+  COMPANY_NAME,
+  LANGUAGES,
+  LOGINBUTTONTEXT,
+  NAV_ITEMS_LIST,
+  SEARCH_BAR_OPTIONS,
+  SEARCHBARPLACEHOLDER,
+} from '../constants';
 import { s3ImageUrls } from '../config/assets/config';
 import { ThemeType } from '@genflowly/react-assets/dist';
 
@@ -17,9 +24,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     navItemsList: NAV_ITEMS_LIST,
     searchBarVisible: false,
     searchBarOptions: SEARCH_BAR_OPTIONS,
-    selectedNavItem: (item: string) =>{},
-    getSelectedLanguage: (lang: string) =>
-    {},
+    selectedNavItem: (item: string) => {},
+    getSelectedLanguage: (lang: string) => {},
     profileName: '',
     loggedIn: false,
     logoSrc: s3ImageUrls.companyLogo,
@@ -30,13 +36,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     loginHandler: () => {},
     inputValue: inputValue,
     setInputValue: setInputValue,
-    searchBarHandler: (value: string) =>{},
+    searchBarHandler: (value: string) => {},
     dropDownOptions: LANGUAGES,
     logoRedirectUrl: '/',
     setSelectedLanguage: setSelectedLanguage,
     selectedLanguage: selectedLanguage,
-    dropDownLabel:'',
-    theme:ThemeType.LIGHT
+    dropDownLabel: '',
+    theme: ThemeType.LIGHT,
   };
   return (
     <div>
