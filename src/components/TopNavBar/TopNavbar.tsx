@@ -9,7 +9,7 @@ MultiPurposeButton,
 ButtonVariant,
 ThemeType,
 } from '@genflowly/react-assets/dist';
-import Styles from './TopNavbar.module.scss';
+import * as Styles from './TopNavbar.module.scss';
 import styled from '@emotion/styled';
 import themes from '../../themes/theme';
 import { s3ImageUrls } from '../../config/assets/config';
@@ -129,9 +129,9 @@ listItem?.focus();
 }, [focusedListItem]);
 
 return (
-<NavbarContainer className={Styles['navbarContainer']}>
-<div className={Styles['optionContainer']}>
-<div className={Styles['logoContainer']}>
+<NavbarContainer className={Styles.navbarContainer}>
+<div className={Styles.optionContainer}>
+<div className={Styles.logoContainer}>
 <a
 tabIndex={selectedListItem ? -1 : 0}
 href={logoRedirectUrl}

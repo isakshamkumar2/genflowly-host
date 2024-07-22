@@ -8,6 +8,10 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+i18n.init({
+  fallbackLng: 'en',
+  debug: true,
+});
 root.render(
   <React.StrictMode>
     <App />
