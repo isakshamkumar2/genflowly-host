@@ -3,7 +3,11 @@ name: Amplify Deploy
 on:
   push:
     branches:
+<<<<<<< HEAD
       - dev
+=======
+      - main
+>>>>>>> 09d71f5 (init)
 
 jobs:
   build:
@@ -43,7 +47,11 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+<<<<<<< HEAD
           aws-region: ap-south-1
+=======
+          aws-region: ${{ secrets.AWS_REGION }}
+>>>>>>> 09d71f5 (init)
 
       - name: Install Amplify CLI
         run: npm install -g @aws-amplify/cli@latest
