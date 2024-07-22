@@ -43,6 +43,7 @@ jest.mock('@genflowly/react-assets/dist', () => ({
       {children}
     </button>
   )),
+
   InputSize: { extraLarge: 'extraLarge' },
   ButtonVariant: { text: 'text' },
   ThemeType: { DARK: 'DARK', LIGHT: 'LIGHT' },
@@ -76,6 +77,7 @@ const mockProps = {
 };
 
 describe('TopNavbar', () => {
+
   it('renders logo with correct attributes', () => {
     render(<TopNavbar {...mockProps} />);
     const logo = screen.getByAltText('Logo');
@@ -111,6 +113,7 @@ describe('TopNavbar', () => {
     const loginButton = screen.getByRole('button', {
       name: mockProps.loginButtonText,
     });
+
     expect(loginButton).toBeInTheDocument();
   });
 
@@ -153,6 +156,7 @@ describe('TopNavbar', () => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
       value: jest.fn().mockImplementation((query) => ({
+
         matches: false,
         media: query,
         onchange: null,
@@ -255,3 +259,5 @@ describe('TopNavbar', () => {
     expect(navItem).toHaveStyle('font-size: 20px');
   });
 });
+
+
